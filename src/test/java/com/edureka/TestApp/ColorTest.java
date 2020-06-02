@@ -48,11 +48,6 @@ public class ColorTest
         
         Thread.sleep(5000);
         
-	    String text = prop.getProperty("exp_add_text");
-
-
-        String bodyText = driver.findElement(By.xpath("/html/body")).getText();
-        System.out.println(bodyText);
 	    driver.findElement(By.xpath("/html/body/form/input[1]")).sendKeys("12");
 	    driver.findElement(By.xpath("/html/body/form/input[2]")).sendKeys("38");
         
@@ -65,7 +60,9 @@ public class ColorTest
 	    
         System.out.println("Color is " + mycolor);
         
-	    Assert.assertEquals(mycolor, "Aqua");
+        String expColor = prop.getProperty("expColor");
+        
+	    Assert.assertEquals(mycolor, expColor);
 	       
 	    Thread.sleep(5000);
 	    
