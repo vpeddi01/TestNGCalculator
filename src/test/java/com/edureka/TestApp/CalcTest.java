@@ -73,7 +73,7 @@ public class CalcTest
 	    
 	    Assert.assertTrue(bodyText.contains(text), text + " not found!" );
 	    
-	    Assert.assertTrue(bodyText.contains(text), "50 not found!" );
+	    Assert.assertTrue(bodyText.contains("50"), "50 not found!" );
 	    
 	    Thread.sleep(5000);
 	    
