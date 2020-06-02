@@ -5,8 +5,11 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
@@ -57,7 +60,6 @@ public class CalcTest
         
 	    String text = prop.getProperty("exp_add_text");
 
-
         String bodyText = driver.findElement(By.xpath("/html/body")).getText();
         System.out.println(bodyText);
 	    driver.findElement(By.id("f1")).sendKeys("12");
@@ -65,10 +67,14 @@ public class CalcTest
         
 	    driver.findElement(By.name("r1")).click();
 	    
-	    driver.findElement(By.xpath("/html/body/form/input[3]")).click();
+	    WebDriverWait wait = new WebDriverWait(driver, 10);
+	    WebElement myElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("s1")));
+	    
+	    myElement.click();
+	    //driver.findElement(By.id("s1")).click();
 	    Thread.sleep(5000);
 	    
-	    bodyText = driver.findElement(By.xpath("/html/body")).getText();
+	    bodyText = driver.findElement(By.id("/html/body")).getText();
 	    
 	    System.out.println(bodyText);
 	    
