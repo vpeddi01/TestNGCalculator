@@ -45,6 +45,8 @@ public class SubChromeTest {
         String test = driver.findElement(By.xpath("/html/body/h1")).getText();
         System.out.println("findElement!!" + test);
         
+        Thread.sleep(5000);
+        
         System.out.println("Test Succeeded!!");
              
         //close Fire fox
