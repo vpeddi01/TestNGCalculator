@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 
-public class testSubChrome {
+public class SubChromeTest {
 
 	@Test
     void testSub() throws IOException, InterruptedException
