@@ -31,7 +31,7 @@ public class CalcTest
 	    //String myURL = "http://130.211.229.175:9090/calculator/";
 	    FirefoxOptions options = new FirefoxOptions();
         
-        //options.addArguments("--headless");
+        options.addArguments("--headless");
 	    options.setCapability("requireWindowFocus", true);
         //String mygecko=System.getenv("HOME") + "/Downloads/geckodriver";
         String mygecko= prop.getProperty("webdriver_path") + "geckodriver";
@@ -52,8 +52,7 @@ public class CalcTest
         Thread.sleep(5000);
         
 	    String text = prop.getProperty("exp_add_text");
-	    //String text = "Addition";
-	    //int len = text.length();
+
 
         String bodyText = driver.findElement(By.xpath("/html/body")).getText();
         System.out.println(bodyText);
@@ -68,8 +67,6 @@ public class CalcTest
 	    bodyText = driver.findElement(By.xpath("/html/body")).getText();
 	    
 	    System.out.println(bodyText);
-	    
-	    //Assert.assertEquals(bodyText.substring(0, len),text);
 	    
 	    Assert.assertTrue(bodyText.contains(text), text + " not found!" );
 	    
