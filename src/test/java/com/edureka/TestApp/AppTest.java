@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 public class AppTest 
 {    	
-    @Test
+    //@Test
     void testHelloEdurekaText() throws Exception  {
 		
 	    WebDriver driver;

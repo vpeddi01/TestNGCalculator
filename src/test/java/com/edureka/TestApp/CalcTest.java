@@ -1,4 +1,4 @@
-package com.edureka.TestCalculatorJar;
+package com.edureka.TestApp;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -14,26 +14,27 @@ import java.io.IOException;
 
 
 public class CalcTest 
-{    	
-    public static void main(String[] args) throws IOException, InterruptedException
+{   
+    @Test
+    void testAdd() throws IOException, InterruptedException
     {
 		
 	    WebDriver driver;
 	    
-	    //Properties prop = new Properties();
-	    //FileInputStream f = new FileInputStream("./data.properties");
-	    //prop.load(f);
-	    //String myIP = prop.getProperty("public_ip");
-	    //String myPort = prop.getProperty("tomcat_port");
-	    //String myAppName = prop.getProperty("app_name");
-	    //String myURL = "http://" + myIP + ":" + myPort + "/" + myAppName;
-	    String myURL = "http://130.211.229.175:9090/calculator/";
+	    Properties prop = new Properties();
+	    FileInputStream f = new FileInputStream("./data.properties");
+	    prop.load(f);
+	    String myIP = prop.getProperty("public_ip");
+	    String myPort = prop.getProperty("tomcat_port");
+	    String myAppName = prop.getProperty("app_name");
+	    String myURL = "http://" + myIP + ":" + myPort + "/" + myAppName;
+	    //String myURL = "http://130.211.229.175:9090/calculator/";
 	    FirefoxOptions options = new FirefoxOptions();
         
         //options.addArguments("--headless");
 	    options.setCapability("requireWindowFocus", true);
-        String mygecko=System.getenv("HOME") + "/Downloads/geckodriver";
-        //String mygecko= prop.getProperty("webdriver_path") + "geckodriver";
+        //String mygecko=System.getenv("HOME") + "/Downloads/geckodriver";
+        String mygecko= prop.getProperty("webdriver_path") + "geckodriver";
 
         System.setProperty("webdriver.gecko.driver",mygecko);
         
@@ -50,8 +51,8 @@ public class CalcTest
         
         Thread.sleep(5000);
         
-	    //String text = prop.getProperty("exp_add_text");
-	    String text = "Addition";
+	    String text = prop.getProperty("exp_add_text");
+	    //String text = "Addition";
 	    //int len = text.length();
 
         String bodyText = driver.findElement(By.xpath("/html/body")).getText();

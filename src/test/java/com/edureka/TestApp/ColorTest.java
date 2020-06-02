@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 public class ColorTest 
 {    	
-    @Test
+    //@Test
     void testSiteColor() throws Exception  {
 		
 	    WebDriver driver;
