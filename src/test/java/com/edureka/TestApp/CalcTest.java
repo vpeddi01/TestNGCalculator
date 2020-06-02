@@ -74,7 +74,7 @@ public class CalcTest
 	    //driver.findElement(By.id("s1")).click();
 	    Thread.sleep(5000);
 	    
-	    bodyText = driver.findElement(By.id("/html/body")).getText();
+	    bodyText = driver.findElement(By.xpath("/html/body")).getText();
 	    
 	    System.out.println(bodyText);
 	    
