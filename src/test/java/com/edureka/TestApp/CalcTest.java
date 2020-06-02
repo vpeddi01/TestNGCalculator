@@ -5,7 +5,6 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
@@ -25,10 +24,17 @@ public class CalcTest
 	    FileInputStream f = new FileInputStream("./data.properties");
 	    prop.load(f);
 	    String myIP = prop.getProperty("public_ip");
+	    
+	    if(System.getenv("MY_IP")!=null){
+		    myIP=System.getenv("MY_IP");
+	    }
+	    
 	    String myPort = prop.getProperty("tomcat_port");
 	    String myAppName = prop.getProperty("app_name");
 	    String myURL = "http://" + myIP + ":" + myPort + "/" + myAppName;
 	    //String myURL = "http://130.211.229.175:9090/calculator/";
+	    System.out.println("Opening " + myURL);
+	    
 	    FirefoxOptions options = new FirefoxOptions();
         
         options.addArguments("--headless");
@@ -44,8 +50,6 @@ public class CalcTest
         driver = new FirefoxDriver(options);
         
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-
-	    System.out.println("Opening " + myURL);
 
         driver.get(myURL);
         
