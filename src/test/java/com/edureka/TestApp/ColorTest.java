@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 public class ColorTest 
 {    	
-    //@Test
+    @Test
     void testSiteColor() throws Exception  {
 		
 	    WebDriver driver;
@@ -24,38 +24,51 @@ public class ColorTest
 	    String myIP = prop.getProperty("public_ip");
 	    String myPort = prop.getProperty("tomcat_port");
 	    String myAppName = prop.getProperty("app_name");
-
-	    if(System.getenv("MY_IP")!=null){
-		    myIP=System.getenv("MY_IP");
-	    }
 	    String myURL = "http://" + myIP + ":" + myPort + "/" + myAppName;
-	    System.out.println("Opening URL " + myURL);
-
+	    //String myURL = "http://130.211.229.175:9090/calculator/";
 	    FirefoxOptions options = new FirefoxOptions();
         
-            options.addArguments("--headless");
-	    
-            String mygecko= prop.getProperty("webdriver_path") + "geckodriver";
+        options.addArguments("--headless");
+	    options.setCapability("requireWindowFocus", true);
+        //String mygecko=System.getenv("HOME") + "/Downloads/geckodriver";
+        String mygecko= prop.getProperty("webdriver_path") + "geckodriver";
 
-            System.setProperty("webdriver.gecko.driver",mygecko);
+        System.setProperty("webdriver.gecko.driver",mygecko);
         
-            System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
-            System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
+        System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
+        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
         
-            driver = new FirefoxDriver(options);
+        driver = new FirefoxDriver(options);
         
-            driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
 
 	    System.out.println("Opening " + myURL);
 
-            driver.get(myURL);
+        driver.get(myURL);
         
-            Thread.sleep(5000);
+        Thread.sleep(5000);
         
-            String mycolor = driver.findElement(By.tagName("body")).getAttribute("bgcolor");
+	    String text = prop.getProperty("exp_add_text");
+
+
+        String bodyText = driver.findElement(By.xpath("/html/body")).getText();
+        System.out.println(bodyText);
+	    driver.findElement(By.xpath("/html/body/form/input[1]")).sendKeys("12");
+	    driver.findElement(By.xpath("/html/body/form/input[2]")).sendKeys("38");
+        
+	    driver.findElement(By.name("r1")).click();
 	    
-	    Assert.assertEquals(mycolor, "Aqua");
+	    driver.findElement(By.xpath("/html/body/form/input[3]")).click();
+	    Thread.sleep(5000);
+	    
+        String mycolor = driver.findElement(By.tagName("body")).getAttribute("bgcolor");
+	    
+        System.out.println("Color is " + mycolor);
         
-            driver.quit();
+	    Assert.assertEquals(mycolor, "Aqua");
+	       
+	    Thread.sleep(5000);
+	    
+        driver.quit();
 	}
 }
