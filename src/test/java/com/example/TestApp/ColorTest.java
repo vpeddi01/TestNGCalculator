@@ -29,12 +29,10 @@ public class ColorTest
 	    }
 	    
 	    String myURL = "http://" + myIP + ":" + myPort + "/" + myAppName;
-	    //String myURL = "http://130.211.229.175:9090/calculator/";
 	    FirefoxOptions options = new FirefoxOptions();
         
         options.addArguments("--headless");
 	    options.setCapability("requireWindowFocus", true);
-        //String mygecko=System.getenv("HOME") + "/Downloads/geckodriver";
         String mygecko= prop.getProperty("webdriver_path") + "geckodriver";
 
         System.setProperty("webdriver.gecko.driver",mygecko);

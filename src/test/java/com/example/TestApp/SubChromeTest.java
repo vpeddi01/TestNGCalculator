@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SubChromeTest {
@@ -31,11 +32,8 @@ public class SubChromeTest {
 	    }
 	    
 	    String myURL = "http://" + myIP + ":" + myPort + "/" + myAppName;
-	    //String myURL = "http://130.211.229.175:9090/calculator/";
 	    System.out.println("Opening " + myURL);
 	    
-		//System.setProperty("webdriver.chrome.driver","/home/edureka/Downloads/chromedriver");
-		
 		System.setProperty("webdriver.chrome.driver",prop.getProperty("webdriver_path") + "chromedriver");
 		
 		System.setProperty("webdriver.chrome.logfile", "chromedriver.log");
@@ -50,14 +48,20 @@ public class SubChromeTest {
         driver.get(myURL);
         System.out.println("baseUrl!!");
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        String test = driver.findElement(By.xpath("/html/body/h1")).getText();
-        System.out.println("findElement!!" + test);
+        
+	    driver.findElement(By.id("f1")).sendKeys("38");
+	    driver.findElement(By.xpath("/html/body/form/input[2]")).sendKeys("18");
+        driver.findElement(By.xpath("//input[@name='r2']")).click();
+        driver.findElement(By.id("s1")).click();
+        
+        String bodyText = driver.findElement(By.xpath("/html/body")).getText();
+        
+        Assert.assertTrue(bodyText.contains("21"), "20 not found!" );
         
         Thread.sleep(5000);
         
         System.out.println("Test Succeeded!!");
              
-        //close Fire fox
         driver.quit();  
 		
     }
