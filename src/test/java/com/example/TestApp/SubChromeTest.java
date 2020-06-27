@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 public class SubChromeTest {
 
-	//@Test
+	@Test
     void testSub() throws IOException, InterruptedException
     {
 		WebDriver driver;
@@ -29,7 +29,10 @@ public class SubChromeTest {
 	    //String myURL = "http://130.211.229.175:9090/calculator/";
 	    System.out.println("Opening " + myURL);
 	    
-		System.setProperty("webdriver.chrome.driver","/home/edureka/Downloads/chromedriver");
+		//System.setProperty("webdriver.chrome.driver","/home/edureka/Downloads/chromedriver");
+		
+		System.setProperty("webdriver.chrome.driver",prop.getProperty("webdriver_path") + "chromedriver");
+		
 		System.setProperty("webdriver.chrome.logfile", "chromedriver.log");
 	    System.setProperty("webdriver.chrome.verboseLogging", "true");
 		System.out.println("System.setProperty!!");
