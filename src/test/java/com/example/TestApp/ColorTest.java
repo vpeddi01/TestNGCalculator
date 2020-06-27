@@ -1,4 +1,4 @@
-package com.edureka.TestApp;
+package com.example.TestApp;
 
 import java.io.FileInputStream;
 import java.util.Properties;
