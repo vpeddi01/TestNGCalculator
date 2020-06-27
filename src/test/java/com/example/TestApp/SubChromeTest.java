@@ -56,7 +56,7 @@ public class SubChromeTest {
         
         String bodyText = driver.findElement(By.xpath("/html/body")).getText();
         
-        Assert.assertTrue(bodyText.contains("21"), "20 not found!" );
+        Assert.assertTrue(bodyText.contains("20"), "20 not found!" );
         
         Thread.sleep(5000);
         
