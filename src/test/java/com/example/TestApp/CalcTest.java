@@ -35,43 +35,43 @@ public class CalcTest
 	    String myPort = prop.getProperty("tomcat_port");
 	    String myAppName = prop.getProperty("app_name");
 	    String myURL = "http://" + myIP + ":" + myPort + "/" + myAppName;
-	    //String myURL = "http://130.211.229.175:9090/calculator/";
 	    System.out.println("Opening " + myURL);
 	    
 	    FirefoxOptions options = new FirefoxOptions();
-        
-        options.addArguments("--headless");
+	    
+	    options.addArguments("--headless");
 	    options.setCapability("requireWindowFocus", true);
-        //String mygecko=System.getenv("HOME") + "/Downloads/geckodriver";
-        String mygecko= prop.getProperty("webdriver_path") + "geckodriver";
-
-        System.setProperty("webdriver.gecko.driver",mygecko);
-        
-        System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
-        System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
-        
-        driver = new FirefoxDriver(options);
-        
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-
-        driver.get(myURL);
-        
-        Thread.sleep(5000);
-        
+	    //String mygecko=System.getenv("HOME") + "/Downloads/geckodriver";
+	    String mygecko= prop.getProperty("webdriver_path") + "geckodriver";
+	    
+	    System.setProperty("webdriver.gecko.driver",mygecko);
+	    
+	    System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
+	    System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
+	    
+	    driver = new FirefoxDriver(options);
+	    
+	    driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+	    
+	    driver.get(myURL);
+	    
+	    Thread.sleep(5000);
+	    
 	    String text = prop.getProperty("exp_add_text");
-
-        String bodyText = driver.findElement(By.xpath("/html/body")).getText();
-        System.out.println(bodyText);
+	    
+	    String bodyText = driver.findElement(By.xpath("/html/body")).getText();
+	    
+	    System.out.println(bodyText);
 	    driver.findElement(By.id("f1")).sendKeys("12");
 	    driver.findElement(By.xpath("/html/body/form/input[2]")).sendKeys("38");
         
 	    driver.findElement(By.name("r1")).click();
 	    
-	    WebDriverWait wait = new WebDriverWait(driver, 10);
-	    WebElement myElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("s1")));
+	    //WebDriverWait wait = new WebDriverWait(driver, 10);
+	    //WebElement myElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("s1")));
 	    
-	    myElement.click();
-	    //driver.findElement(By.id("s1")).click();
+	    //myElement.click();
+	    driver.findElement(By.id("s1")).click();
 	    Thread.sleep(5000);
 	    
 	    bodyText = driver.findElement(By.xpath("/html/body")).getText();
@@ -84,6 +84,6 @@ public class CalcTest
 	    
 	    Thread.sleep(5000);
 	    
-        driver.quit();
+	    driver.quit();
 	}
 }
