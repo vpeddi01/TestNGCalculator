@@ -89,7 +89,7 @@ public class CalcTest
     
     
     @Test
-    void testSub() throws IOException, InterruptedException
+    void testMul() throws IOException, InterruptedException
     {
 		
 	    WebDriver driver;
