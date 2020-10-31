@@ -54,6 +54,7 @@ public class SubChromeTest {
 	    driver.findElement(By.id("f1")).sendKeys("38");
 	    driver.findElement(By.xpath("/html/body/form/input[2]")).sendKeys("18");
         driver.findElement(By.xpath("//input[@name='r2']")).click();
+        Thread.sleep(5000);
         driver.findElement(By.id("s1")).click();
         
         String bodyText = driver.findElement(By.xpath("/html/body")).getText();

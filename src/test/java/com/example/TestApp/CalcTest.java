@@ -73,6 +73,7 @@ public class CalcTest
 	    //WebElement myElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("s1")));
 	    
 	    //myElement.click();
+	    Thread.sleep(5000);
 	    driver.findElement(By.id("s1")).click();
 	    Thread.sleep(5000);
 	    
@@ -83,8 +84,6 @@ public class CalcTest
 	    Assert.assertTrue(bodyText.contains(text), text + " not found!" );
 	    
 	    Assert.assertTrue(bodyText.contains("50"), "50 not found!" );
-	    
-	    Thread.sleep(5000);
 	    
 	    driver.quit();
 	}
@@ -136,6 +135,7 @@ public class CalcTest
         
 	    driver.findElement(By.name("r3")).click();
 	
+	    Thread.sleep(5000);
 	    driver.findElement(By.id("s1")).click();
 	    
 	    Thread.sleep(5000);
@@ -145,8 +145,6 @@ public class CalcTest
 	    System.out.println(bodyText);
 	    
 	    Assert.assertTrue(bodyText.contains("24"), "24 not found!" );
-	    
-	    Thread.sleep(5000);
 	    
 	    driver.quit();
 	}
