@@ -14,7 +14,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
 
-
 public class CalcTest 
 {   
     @Test
@@ -130,7 +129,7 @@ public class CalcTest
 	    
 	    Thread.sleep(5000);
 	    
-        driver.findElement(By.id("f1")).sendKeys("6");
+            driver.findElement(By.id("f1")).sendKeys("6");
 	    driver.findElement(By.xpath("/html/body/form/input[2]")).sendKeys("4");
         
 	    driver.findElement(By.name("r3")).click();
