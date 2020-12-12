@@ -17,7 +17,7 @@ public class SubChromeTest {
     @Test
     void testSub() throws IOException, InterruptedException
     {
-		WebDriver driver;
+	    WebDriver driver;
 		
 	    Properties prop = new Properties();
 	    FileInputStream f = new FileInputStream("./data.properties");
