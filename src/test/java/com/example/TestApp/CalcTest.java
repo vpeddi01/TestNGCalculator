@@ -73,6 +73,7 @@ public class CalcTest
 	    
 	    //myElement.click();
 	    Thread.sleep(5000);
+
 	    driver.findElement(By.id("s1")).click();
 	    Thread.sleep(5000);
 	    
